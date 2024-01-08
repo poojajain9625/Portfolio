@@ -1,0 +1,89 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+<div class='container mt-5'>
+    <h1 class='text-warning mb-5 border-bottom'>CONTACT US</h1>
+    <div class='row text-white mb-5'>
+        <p class='mx-auto mb-5' style='font-size:20px'>     
+            Do you have any questions? Please do not hesitate to contact us.
+        </p>
+        <div class='col-sm-9 mb-5'>
+            <form action='{% url 'contact' %}' method='POST'>
+                {% csrf_token %}
+                <div class='form-row'>
+                    <div class='form-group fs-5'>
+                        <label for='inputName'>Name</label>
+                        {{ form.fields_name }}
+                        <input type='text' class='form-control' id='inputName' name='name' required />
+                    </div><br>
+
+                    <div class='form-group fs-5'>
+                        <label for='inputEmail'>Email</label>
+                        {{ form.fields_email }}
+                        <input type='email' class='form-control' id='inputEmail' name='email' required />
+                    </div><br>
+                </div>
+
+                <div class='form-group fs-5'>
+                    <label for='inputSubject'>Subject</label>
+                    {{ form.fields_subject }}
+                    <input type='text' class='form-control' id='inputSubject' name='subject' required />
+                </div><br>
+
+                <div class='mb-5 fs-5'>
+                    <label for='inputTextarea'>Message</label>
+                    {{ form.fields_message }}
+                    <textarea class='form-control' id='inputTextarea' name='message' required></textarea>
+                    
+                </div>
+
+                <button class='btn btn-primary fs-4' type='submit'>Submit</button>
+            </form>    
+            
+            {% if form.errors %}
+            <div class="alert alert-danger">
+                <strong>Error!</strong> Please correct the following errors:
+                <ul>
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                    <li>{{ field|title }}: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            {% if messages %}
+                {% for message in messages %}
+                    <span {% if message.tags %} style="color: green;" class='{{message.tags}} fs-3 ' {% endif %}>{{message}}</span>
+                {% endfor %}
+            {% endif %}          
+        </div>
+
+        <div class='col-sm-3 text-center'>
+            <ul class='list-unstyled'>
+                <li>
+                    <i class="fa-solid fa-location-dot fa-2x i-colo"></i>
+                    <p style='font-size:20px;'>Delhi, India </p>
+                </li>
+                <li>
+                    <i class="fa-solid fa-phone fa-2x i-colo"></i>
+                    <p style='font-size:20px;'>91+ 9625550589</p>
+                </li>
+                <li>
+                    <i class="fa-regular fa-envelope fa-2x i-colo"></i>
+                    <p style='font-size:20px;'>poojajain9625@gmail.com</p>
+                </li>
+                <li>
+                    <i class="fa-brands fa-linkedin fa-2x i-colo"></i><br>
+                    <a href='https://www.linkedin.com/in/pooja-jain-744109235/' target='_blank' class='mb-3 text-white' style="text-decoration:none; font-size:20px;">LinkedIn</a>
+                </li><br>
+                <li>
+                    <i class="fa-brands fa-github fa-2x i-colo"></i>
+                    <p><a href='https://github.com/poojajain9625' target='_blank' style="text-decoration:none; font-size:20px;" class='mb-3 text-white'>Github</a></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

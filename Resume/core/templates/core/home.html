@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}  
+{% load static %}
+{% block content %} 
+<div class='mt-5 '>
+    <div class= text-center>
+        <img src='{% static 'core/images/pooja.jpeg' %}' alt='ProfilePic' class='img-thumbnail'
+     width="250px", height="150px">
+    </div>
+     <div class='mt-5 text-white mx-5 text-justify'>
+        <h1 class='font-weight-bold st-font'>Hello,</h1>
+        <div class='px-4 ss-color' style='line-height:2rem'>
+            <p style='text-index:100px;'>I am <b class='text-warning'>Pooja Jain </b> having 1 Year of 
+            experience as Data Analyst in Droisys India Pvt Ltd under AI/ML Team. Where My work is to 
+            collect data from different sources, Data Wrangling and Organizing to ensure data quality and
+            accuracy to train the Model for OBJECT DETECTION.</p>
+            <p>
+                Since earning my<b class='text-warning '> Bachelor's Degree </b>in Mahatma Gandhi Mission's College of Engineering and 
+                Technology, Noida. I have done my Intern in <b class='text-warning'> Machine learning using python </b>from CETPA INFOTECH PVT 
+                LTD, A leading industry training based institute, and it provides the students with the 
+                knowledge and hands-on training for the computers and IT-based fields. 
+            </p>
+        </div>
+     </div>   
+     <div class='text-center'>
+        <a href='{% url 'contact' %}' class='btn btn-outline-warning my-3 mr-5'>Hire Me</a>
+        <a href="{% static './core/pdf/pooja_res.pdf' %}" download='Resume' class='btn btn-outline-info my-3'>Download Resume</a>
+        
+     </div>   
+</div>
+{% endblock content %}
